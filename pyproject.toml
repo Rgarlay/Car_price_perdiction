@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crypto_liquidation"
+version = "0.0.1"
+description = "pwskill_project"
+readme = "README.rst"
+authors = [
+  {name = "Ravi Garlay", email = "ravigarlay@gmail.com"}
+]
+maintainers = [
+  {name = "Ravi Garlay", email = "ravigarlay@gmail.com"}
+]
+classifiers = [
+
+]
+license = {text = "GNU General Public License v3"}
+dependencies = [
+  
+]
+
+[project.optional-dependencies]
+dev = [
+    "coverage",  # testing
+    "mypy",  # linting
+    "pytest",  # testing
+    "ruff"  # linting
+]
+
+[project.urls]
+
+bugs = "https://github.com/rgarlay/crypto_liquidation/issues"
+changelog = "https://github.com/rgarlay/crypto_liquidation/blob/master/changelog.md"
+homepage = "https://github.com/rgarlay/crypto_liquidation"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+"*" = ["*.*"]
+
+
+
+
+# Mypy
+# ----
+
+[tool.mypy]
+files = "."
+
+# Use strict defaults
+strict = true
+warn_unreachable = true
+warn_no_return = true
+
+[[tool.mypy.overrides]]
+# Don't require test functions to include types
+module = "tests.*"
+allow_untyped_defs = true
+disable_error_code = "attr-defined"
+
