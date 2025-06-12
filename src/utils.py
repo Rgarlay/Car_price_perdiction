@@ -14,8 +14,6 @@ def oversampling(df):
   df = pd.concat([df,smote], ignore_index=True)
   return df
 
-
-
 def encoding(df):
   df['cylindernumber'] = df['cylindernumber'].replace({'eight':5,'six':4,'five':3,'four':1,'two':2})
   df['aspiration'] = df['aspiration'].replace({'std':1,'turbo':0})
@@ -26,7 +24,6 @@ def feature_eng(df_oversampled):
   df_oversampled['efficency'] = df_oversampled['horsepower']/df_oversampled['curbweight']
   df_oversampled = df_oversampled.drop(columns=['horsepower','curbweight'])
   return df_oversampled
-
 
 def outlier_capping(df,col):
   upper = df[col].quantile(0.75)
@@ -45,6 +42,14 @@ def save_object(file_path, obj):
     with open(file_path, "wb") as file_obj:
       dill.dump(obj, file_obj)
     
+  except Exception as e:
+    raise CustomException(e,sys)
+  
+def load_object(file_path):
+  try:
+    with open(file_path,'rb') as file_obj:
+      return dill.load(file_obj)
+                
   except Exception as e:
     raise CustomException(e,sys)
   

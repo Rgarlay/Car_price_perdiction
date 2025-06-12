@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Data Input Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        label {
+            font-weight: bold;
+        }
+        .field-block {
+            margin-bottom: 15px;
+        }
+        .hint {
+            font-size: 0.9em;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h2>Enter Car Attributes</h2>
+    <form action="{{ url_for('predict_pr') }}" method="POST">
+
+        <div class="field-block">
+            <label for="symboling">Symboling:</label><br>
+            <input type="number" name="symboling" id="symboling" required>
+            <div class="hint">Typical values: -2 to +3 (not continuous)</div>
+        </div>
+
+        <div class="field-block">
+            <label for="wheelbase">Wheelbase:</label><br>
+            <input type="number" step="any" name="wheelbase" id="wheelbase" required>
+            <div class="hint">Range: 0–120 (right-skewed)</div>
+        </div>
+
+        <div class="field-block">
+            <label for="carlength">Car Length:</label><br>
+            <input type="number" step="any" name="carlength" id="carlength" required>
+            <div class="hint">Range: 150–200 (approximately normal)</div>
+        </div>
+
+        <div class="field-block">
+            <label for="carwidth">Car Width:</label><br>
+            <input type="number" step="any" name="carwidth" id="carwidth" required>
+            <div class="hint">Range: 60s–low 70s (Gaussian)</div>
+        </div>
+
+        <div class="field-block">
+            <label for="carheight">Car Height:</label><br>
+            <input type="number" step="any" name="carheight" id="carheight" required>
+            <div class="hint">Range: high 40s to 60 (Gaussian)</div>
+        </div>
+
+        <div class="field-block">
+            <label for="curbweight">Curb Weight:</label><br>
+            <input type="number" step="any" name="curbweight" id="curbweight" required>
+            <div class="hint">Range: 1500–4000 (normal distribution)</div>
+        </div>
+
+        <div class="field-block">
+            <label for="enginesize">Engine Size:</label><br>
+            <input type="number" step="any" name="enginesize" id="enginesize" required>
+            <div class="hint">Range: 100–300 (positively skewed)</div>
+        </div>
+
+        <div class="field-block">
+            <label for="boreratio">Bore Ratio:</label><br>
+            <input type="number" step="any" name="boreratio" id="boreratio" required>
+            <div class="hint">Range: 2–4 (peaks at 3 & 4)</div>
+        </div>
+
+        <div class="field-block">
+            <label for="stroke">Stroke:</label><br>
+            <input type="number" step="any" name="stroke" id="stroke" required>
+            <div class="hint">Range: 2–4 (slightly left-skewed)</div>
+        </div>
+
+        <div class="field-block">
+            <label for="carheight">Efficency:</label><br>
+            <input type="number" step="any" name="efficency" id="efficency" required>
+            <div class="hint">efficency  :- Range -1 to +1.</div>
+        </div>
+
+
+        <div class="field-block">
+            <label for="compression_ratio">Compression Ratio:</label><br>
+            <input type="number" step="any" name="compression_ratio" id="compression_ratio" required>
+            <div class="hint">Range: 7–23 (high positive skew, dual peaks)</div>
+        </div>
+
+        <div class="field-block">
+            <label for="horsepower">Horsepower:</label><br>
+            <input type="number" step="any" name="horsepower" id="horsepower" required>
+            <div class="hint">Range: &lt;100 to ~300 (positively skewed)</div>
+        </div>
+
+        <div class="field-block">
+            <label for="peakrpm">Peak RPM:</label><br>
+            <input type="number" step="any" name="peakrpm" id="peakrpm" required>
+            <div class="hint">Range: 4000–6000 (normal distribution)</div>
+        </div>
+
+        <div class="field-block">
+            <label for="citympg">City MPG:</label><br>
+            <input type="number" step="any" name="citympg" id="citympg" required>
+            <div class="hint">Range: high 10s to low 40s (normal shape)</div>
+        </div>
+
+        <div class="field-block">
+            <label for="highwaympg">Highway MPG:</label><br>
+            <input type="number" step="any" name="highwaympg" id="highwaympg" required>
+            <div class="hint">Range: 16–54 (normal distribution)</div>
+        </div>
+
+        <div class="field-block">
+            <label for="aspiration">Aspiration:</label><br>
+            <input type="number" step="any" name="aspiration" id="aspiration" required>
+            <div class="hint">Depends on encoding (e.g., 0 = standard, 1 = turbo)</div>
+        </div>
+
+        <div class="field-block">
+            <label for="cylindernumber">Cylinder Number:</label><br>
+            <select name="cylindernumber" id="cylindernumber" required>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="8">8</option>
+            </select>
+            <div class="hint">Choose from discrete values: 2, 4, 5, 6, 8</div>
+        </div>
+
+        <div class="field-block">
+            <label for="drivewheel">Drive Wheel:</label><br>
+            <select name="drivewheel" id="drivewheel" required>
+                <option value="fwd">FWD (Front)</option>
+                <option value="rwd">RWD (Rear)</option>
+            </select>
+            <div class="hint">Select one: Front-wheel or Rear-wheel drive</div>
+        </div>
+
+         <div class="text-center">
+                    <input class="btn btn-primary" type="submit" value="Predict Performance">
+        </div>
+    </form>
+
+            <h2 class="text-center mt-4">
+                the price is {{ results }}
+            </h2>
+        </div>
+</body>
+</html>

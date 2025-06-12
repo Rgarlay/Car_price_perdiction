@@ -10,7 +10,7 @@ from ..logger import logging
 
 class model_save():
     def __init__(self):
-        self.model = os.path.join(r'C:\Users\rgarlay\Desktop\DA\Projects\PWskills project\ML project\crypto_liquidation\archieve','model.pickle')
+        self.model = os.path.join(r'C:\Users\rgarlay\Desktop\DA\Projects\PWskills project\ML project\crypto_liquidation\archieve','model.pkl')
 
 class initiate_model_training():
     def __init__(self):
